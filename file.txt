@@ -1,0 +1,23 @@
+import requests, socket, os, sys
+from colorama import Fore, init
+init()
+
+def get_public_ip():
+    try:
+        resp = requests.get("https://api.ipify.org?format=json", timeout=5)
+        resp.raise_for_status()
+        return resp.json().get("ip")
+    except Exception as e:
+        # manejo sencillo de errores
+        print("Error obteniendo IP pública:", e)
+        return None
+    
+ip = get_public_ip()
+
+os.system("msg * Enter 'use Infinity-Bypass'")
+opt =  input(Fore.LIGHTBLACK_EX + ' > ' + Fore.LIGHTCYAN_EX)
+if opt == 'use Infinity-Bypass':
+    os.system('cls')
+    print(Fore.GREEN + f'Username: {Fore.YELLOW}{os.getlogin()}\n{Fore.GREEN}Hostname: {Fore.YELLOW}{socket.gethostname()}\n{Fore.GREEN}IPv6:{Fore.YELLOW} {socket.gethostbyname(socket.gethostname())}\n{Fore.GREEN}Ipv4: {Fore.YELLOW}{ip}')
+    input(Fore.RED + '\nPress Enter To Exit. . .')
+    sys.exit(1)
