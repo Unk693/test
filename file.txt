@@ -4,12 +4,10 @@ init()
 
 def get_public_ip():
     try:
-        resp = requests.get("https://api.ipify.org?format=json", timeout=5)
+        resp = requests.get("https://api.ipify.org?format=json")
         resp.raise_for_status()
         return resp.json().get("ip")
     except Exception as e:
-        # manejo sencillo de errores
-        print("Error obteniendo IP pública:", e)
         return None
     
 ip = get_public_ip()
